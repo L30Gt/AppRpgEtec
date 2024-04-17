@@ -15,7 +15,7 @@ namespace AppRpgEtec.Services.Usuarios
         public async Task<Usuario> PostRegistrarUsuarioAsync(Usuario u)
         {
             string uriComplementar = "/Registrar";
-            u.Id = await _request.PostReturnIntAsync(apiUrlBase + uriComplementar, u);
+            u.Id = await _request.PostReturnIntAsync(apiUrlBase + uriComplementar, u, string.Empty);
             return u;
         }
 
