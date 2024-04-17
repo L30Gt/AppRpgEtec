@@ -5,6 +5,9 @@
         public AppShell()
         {
             InitializeComponent();
+
+            string login = Preferences.Get("UsuarioUsername", string.Empty);
+            lblLogin.Text = $"Login: {login}";
         }
     }
 }
