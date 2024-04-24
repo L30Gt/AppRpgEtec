@@ -13,4 +13,10 @@ public partial class ListagemView : ContentPage
         BindingContext = viewModel;
         Title = "Personagens - App RPG";
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _ = viewModel.ObterPesonagens();
+    }
 }

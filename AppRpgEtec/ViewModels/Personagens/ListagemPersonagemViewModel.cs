@@ -1,6 +1,7 @@
 ﻿using AppRpgEtec.Models;
 using AppRpgEtec.Services.Personagens;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace AppRpgEtec.ViewModels.Personagens
 {
@@ -16,7 +17,12 @@ namespace AppRpgEtec.ViewModels.Personagens
 
             // descarte do retorno
             _ = ObterPesonagens();
+
+            NovoPersonagem = new Command(async () => { await ExibirCadastroPersonagem(); });
         }
+
+        public ICommand NovoPersonagem { get; }
+
         public async Task ObterPesonagens()
         {
             try
@@ -28,6 +34,19 @@ namespace AppRpgEtec.ViewModels.Personagens
             {
                 await Application.Current.MainPage
                         .DisplayAlert("Ops", ex.Message + " Detalhes: " + ex.InnerException, "Ok");
+            }
+        }
+
+        public async Task ExibirCadastroPersonagem()
+        {
+            try
+            {
+                await Shell.Current.GoToAsync("cadPersonagemView");
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage
+                    .DisplayAlert("Ops", ex.Message + " Detalhes: " + ex.InnerException, "Ok");
             }
         }
     }
