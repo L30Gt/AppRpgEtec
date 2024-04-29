@@ -19,9 +19,11 @@ namespace AppRpgEtec.ViewModels.Armas
 
             _ = ObterArmas();
 
-            //TODO: Você deverá criar o método ObterArmas, observando como foi realizado na viewModel de Personagens
-            //ObterArmas();            
+            NovaArma = new Command(async () => { await ExibirCadastroArmas(); });
+         
         }
+
+        public ICommand NovaArma { get; }
 
         public async Task ObterArmas()
         {
@@ -34,6 +36,19 @@ namespace AppRpgEtec.ViewModels.Armas
             {
                 await Application.Current.MainPage
                     .DisplayAlert("Ops", ex.Message + "Detalhes: " + ex.InnerException, "Ok");
+            }
+        }
+
+        public async Task ExibirCadastroArmas()
+        {
+            try
+            {
+                await Shell.Current.GoToAsync("cadArmaView");
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage
+                        .DisplayAlert("Ops", ex.Message + " Detalhes: " + ex.InnerException, "Ok");
             }
         }
 

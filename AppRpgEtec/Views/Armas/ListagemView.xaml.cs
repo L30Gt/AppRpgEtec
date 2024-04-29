@@ -14,4 +14,10 @@ public partial class ListagemView : ContentPage
         BindingContext = viewModel;
         Title = "Armas - App Rpg Etec";
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _ = viewModel.ObterArmas();
+    }
 }
