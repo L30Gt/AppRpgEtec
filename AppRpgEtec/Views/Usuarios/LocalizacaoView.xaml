@@ -6,8 +6,8 @@
              Title="LocalizacaoView">
 
     <maps:Map x:Name="mapa" ItemsSource="{Binding MeuMapa}"
-              MapType="Hybrid" IsShowingUser="True"
-              IsZoomEnabled="True" IsTrafficEnabled="True">
+              MapType="Street" IsShowingUser="True"
+              IsZoomEnabled="True" IsTrafficEnabled="False">
         <maps:Map.ItemTemplate>
             <DataTemplate>
                 <maps:Pin Location="{Binding Location}" 
